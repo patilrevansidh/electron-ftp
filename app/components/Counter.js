@@ -71,7 +71,7 @@ export default class Counter extends Component<Props> {
      // const sourcePath = '/home/revan/work/project1/src/styles'
      try {
       Array.from(e.target.files).map( async file=>{
-        await fs.copy(file.path, 'G:\\Projects\\'+file.name)
+        await fs.copy(file.path, '/home/revan/sambashare/FTP_PLP/new/'+file.name)
       })
     } catch (error) {
         console.log('** Error **', error)
