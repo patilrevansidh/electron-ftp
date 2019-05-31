@@ -46,23 +46,35 @@ export default class Counter extends Component<Props> {
   handleChange = async(event) => {
     event.preventDefault();
     // const sourcePath = '/home/revan/work/project1/src/styles'
-    try {
-        await fs.copy('G:\\Projects\\Source', 'G:\\Projects\\fsdest')
+    // try {
+    //     await fs.copy('G:\\Projects\\Source', 'G:\\Projects\\fsdest')
+    // } catch (error) {
+    //     console.log('** Error **', error)
+    // }
+  };
+
+  isAlreadyExist = (path) => {
+
+  }
+
+  render() {   
+    return (
+      <div>        
+        {/* <button onClick={this.handleChange}>Copy</button> */}
+        <input type='file' multiple onChange={this.handleInputChange} />
+      </div>
+    );
+  }
+
+  handleInputChange = async(e) =>{
+    console.log(e.target.files,'files')
+     // const sourcePath = '/home/revan/work/project1/src/styles'
+     try {
+      Array.from(e.target.files).map( async file=>{
+        await fs.copy(file.path, 'G:\\Projects\\')
+      })
     } catch (error) {
         console.log('** Error **', error)
     }
-    //   // get a file
-    //   client.getFile('shared_folder/A.TXT', './', function(err) {
-    //     console.log("***", err);
-    // })
-  };
-
-  render() {
-   
-    return (
-      <div>        
-        <button onClick={this.handleChange}>Copy</button>
-      </div>
-    );
   }
 }
